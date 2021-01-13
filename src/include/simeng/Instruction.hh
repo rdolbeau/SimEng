@@ -163,6 +163,11 @@ class Instruction {
   virtual const std::vector<uint8_t>& getSupportedPorts() = 0;
 
   bool shouldSplitRequests() const;
+  /** Set this instructions' trace ID. */
+  void setTraceId(uint64_t trId);
+
+  /** Retrieve this instructions' trace ID. */
+  uint64_t getTraceId() const;
 
  protected:
   /** Whether an exception has been encountered. */
@@ -216,6 +221,10 @@ class Instruction {
   /** Whether this instructions' memory accesses should be treated as many
    * independent requests. **/
   bool splitMemoryRequests_ = false;
+  // Traces
+  /** This instruction's trace ID; a higher ID represents a chronologically
+   * newer instruction. */
+  uint64_t traceId_ = 0;
 };
 
 }  // namespace simeng

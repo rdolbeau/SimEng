@@ -46,5 +46,7 @@ uint16_t Instruction::getLSQLatency() const { return lsqExecutionLatency_; }
 uint16_t Instruction::getStallCycles() const { return stallCycles_; }
 
 bool Instruction::shouldSplitRequests() const { return splitMemoryRequests_; }
+void Instruction::setTraceId(uint64_t trId) { traceId_ = trId; };
+uint64_t Instruction::getTraceId() const { return traceId_; };
 
 }  // namespace simeng

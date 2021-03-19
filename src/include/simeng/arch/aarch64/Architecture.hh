@@ -53,7 +53,7 @@ class Architecture : public arch::Architecture {
   /** Returns the current vector length set by the provided configuration. */
   uint64_t getVectorLength() const;
 
-  /** Relays an increment in a perforamnce event to the linux kernel. */
+  /** Relays the new count of the defined performance event to the kernel. */
   void forwardPMUInc(uint16_t event, uint64_t value) const override;
 
  private:

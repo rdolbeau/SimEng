@@ -120,7 +120,7 @@ void ModelConfig::validate() {
     char port_msg[10];
     sprintf(port_msg, "Port %zu ", i);
     std::string port_num = std::string(port_msg);
-    // Check for existance of Portname field and record name
+    // Check for existence of Portname field and record name
     if (nodeChecker<std::string>(port_node["Portname"], port_num + "Portname",
                                  std::vector<std::string>{},
                                  ExpectedValue::String)) {
@@ -135,7 +135,7 @@ void ModelConfig::validate() {
                  << "\" already used\n";
       }
     }
-    // Check for existance of Instruction-Support field
+    // Check for existence of Instruction-Support field
     if (!(port_node["Instruction-Support"].IsDefined()) ||
         port_node["Instruction-Support"].IsNull()) {
       missing_ << "\t- " << port_num << "Instruction-Support\n";
@@ -188,7 +188,7 @@ void ModelConfig::validate() {
     nodeChecker<uint16_t>(rs["Size"], rs_num + "Size",
                           std::make_pair(1, UINT16_MAX),
                           ExpectedValue::UInteger);
-    // Check for existance of Ports field
+    // Check for existence of Ports field
     if (!(rs["Ports"].IsDefined()) || rs["Ports"].IsNull()) {
       missing_ << "\t- " << rs_num << "Ports\n";
       continue;
@@ -527,7 +527,7 @@ template <typename T>
 int ModelConfig::nodeChecker(const YAML::Node& node, const std::string& field,
                              const std::vector<T>& value_set,
                              uint8_t expected) {
-  // Check for the existance of the given node
+  // Check for the existence of the given node
   if (!(node.IsDefined()) || node.IsNull()) {
     missing_ << "\t- " << field << "\n";
     return 0;
@@ -540,7 +540,7 @@ template <typename T>
 int ModelConfig::nodeChecker(YAML::Node node, const std::string& field,
                              const std::vector<T>& value_set, uint8_t expected,
                              T default_value) {
-  // Check for the existance of the given node
+  // Check for the existence of the given node
   if (!(node.IsDefined()) || node.IsNull()) {
     node = default_value;
     return 1;
@@ -552,7 +552,7 @@ int ModelConfig::nodeChecker(YAML::Node node, const std::string& field,
 template <typename T>
 int ModelConfig::nodeChecker(const YAML::Node& node, const std::string& field,
                              const std::pair<T, T>& bounds, uint8_t expected) {
-  // Check for the existance of the given node
+  // Check for the existence of the given node
   if (!(node.IsDefined()) || node.IsNull()) {
     missing_ << "\t- " << field << "\n";
     return 0;
@@ -564,8 +564,13 @@ int ModelConfig::nodeChecker(const YAML::Node& node, const std::string& field,
 template <typename T>
 int ModelConfig::nodeChecker(YAML::Node node, const std::string& field,
                              const std::pair<T, T>& bounds, uint8_t expected,
+<<<<<<< HEAD
                              const T& default_value) {
   // Check for the existance of the given node
+=======
+                             T default_value) {
+  // Check for the existence of the given node
+>>>>>>> 142bda6 (Typo corrections)
   if (!(node.IsDefined()) || node.IsNull()) {
     node = default_value;
     return 1;

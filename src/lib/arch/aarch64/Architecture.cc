@@ -274,6 +274,10 @@ ProcessStateChange Architecture::getUpdateState() const {
   return changes;
 }
 
+void Architecture::forwardPMUInc(uint16_t event, uint64_t value) const {
+  linux_.pmuIncrement(event, value);
+}
+
 uint8_t Architecture::getMaxInstructionSize() const { return 4; }
 
 uint64_t Architecture::getVectorLength() const { return VL_; }

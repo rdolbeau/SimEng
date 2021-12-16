@@ -80,7 +80,7 @@ int simulate(simeng::Core& core, simeng::MemoryInterface& instructionMemory,
         }
         probeCycle = pt.cycle;
       }
-      char str[4] = "";
+      char str[5] = "";
       int success = (*itL)->writeProbeOut(str, probeIndex, newline, start);
       // Increment probe counter
       probeIndex++;

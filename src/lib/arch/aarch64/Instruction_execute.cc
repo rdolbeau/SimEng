@@ -3505,25 +3505,7 @@ void Instruction::execute() {
       double out[32] = {0};
 
       for (int i = 0; i < partition_num; i++) {
-<<<<<<< HEAD
         out[i] = n[i] * m[i];
-=======
-        uint64_t shifted_active = std::pow(2, (i * 8));
-        if (p[i / 8] & shifted_active) {
-          if (b[i] > 2147483647) {
-            out[(2 * i)] = 2147483647;
-          } else if (b[i] < -2147483648) {
-            out[(2 * i)] = -2147483648;
-          } else {
-            out[(2 * i)] = static_cast<int32_t>(std::trunc(b[i]));
-          }
-          // 4294967295 = 0xFFFFFFFF
-          out[(2 * i) + 1] = (b[i] < 0) ? (int32_t)4294967295 : 0;
-        } else {
-          out[(2 * i)] = a[(2 * i)];
-          out[(2 * i) + 1] = a[(2 * i) + 1];
-        }
->>>>>>> d90be20 (Further ISA support and testing)
       }
 
       results[0] = {out, 256};
